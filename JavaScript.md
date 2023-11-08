@@ -32,7 +32,7 @@ Tecnologias que surgiram:
 
 + JavaScript: guia do programador
 
-+ [Documentação Mozilla](developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide)
++ [Documentação Mozilla](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide)
 
 + [Documentção Ecma](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
 
