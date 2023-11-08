@@ -270,7 +270,7 @@ type Aluno = {
 }
 
 interface Engenheiro {
-    crea: matricula
+    crea: string
 }
 
 interface Medico {
@@ -281,8 +281,6 @@ let pessoa: Pessoa
 let aluno: Pessoa<Aluno>
 let engenheiro: Pessoa<Engenheiro>
 let medico: Pessoa<Medico>
-
-aluno.profissao.matricula // é possível acessar tal propriedade de aluno
 ```
 
 *obs: é válido tanto para interfaces como para type*
