@@ -8,49 +8,59 @@ Existem duas formas de si instalar o [typescript](https://www.typescriptlang.org
 
 Primeiramente preciso inicializar o meu projeto, para isso faço (com npm):
 ```
-$ npm init -y
+npm init -y
 ```
 
 Após a inicialização podemos instalar o *TypeScript* localmente como depedência de desenvolvimento com o seguinte comando:
 ```
-$ npm install typescript --save-dev
+npm install typescript --save-dev
 ```
 
 Após a intalação é necessário criar um arquivo de configuração do typescript. Todas as configurações do type ficam em uma arquivo chamado *tsconfig.json* e para criá-lo é necessário fazer:
 ```
-$ npm  tsc --init
+npx tsc --init
 ```
 
 OBS: o arquivo criado possui as configurações e as explicações de cada "tópico"
 
 A configuração estar realizada, para "executar" nosso projeto usamos:
 ```
-$ npm init
+npm init
 ```
 
 ### Globaly instaling TypeScript
 
 A instalação global do TypeScript é mais interessante quando se tem um 'compromisso' a longo termo, ou seja, quando será utilizado em mais de um projeto, sendo assim podemos usar o comando <code>tsc</code> em qualquer no nosso terminal que será reconhecido. Para isso basta executar o comando:
 ```
-$ npm install -g typescript
+npm install -g typescript
 ```
 
 Assim como na instalação do ambiente local criaremos o nosso projeto com
 ```
-$ npm init -y
+npm init -y
 ```
 
 Podemos também criar o arquivo de configuração com:
 ```
-$ npm  tsc --init
+npm  tsc --init
 ```
 
 E inicializaremos o nosso projeto com:
 ```
-$ npm init
+npm init
 ```
 
+Para podermos executar agora o nosso arquivo .ts usaremos o seguinte comando:
+```
+npx tsc
+```
 
+Este comando compilará o nosso arquivo .ts de acordo com o <code>tscongif.json</code>
+
+Para podermos agora transcrever o nosso código de <code>TypeScript</code> para <code>JavaScript</code> usaremos o seguinte comando: 
+```
+node 'nomedoarquivo.js'
+```
 ## Tipo básicos e Inferência de tipos
 
 Assim como no *JS* os tipos de dados básicos em *TypeScript* são:
