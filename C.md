@@ -61,12 +61,13 @@ a+b;
 Sempre que estamos lidando com arquivos é considerado um bom hábito fechar o arquivos que estava sendo lidado, por mais que isso seja realizado automaticamente ao finalizar um programa.
 
 Para podermos realizar tal tarefea usamos a função <code>fclose</code>
-```
+
+```C
 fclose(FILE *arquivo)
 ```
 
 Exemplos usando abertura, operação e fechamento de um arquivo:
-```
+```C
 #include <stdio.h>
 
 int main () {
@@ -93,7 +94,7 @@ int main () {
 Para realizar a leitura de caracteres presentes em um arquivos usamos a função <code>fgetc(arquivo)</code>
 
 Exemplo:
-```
+```C
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -128,7 +129,7 @@ No código acima temos tratamento de erros (encerrando) o programa caso não sej
 
 Assim como podemos ler os caracteres de um arquivo podemos também escrever caracteres em um arquivo. A escrita pode ser realizada por meio da função <code>fputc()</code>
 
-```
+```C
 #include <stdio.h>
 #include <stdlib.h>
 
