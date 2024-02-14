@@ -143,7 +143,7 @@ Assim como as strings posso formatar de acordo com a minha necessidade os númer
 var salary = 1500.5
 salary.toFixed(2)
 salary.ToFixed(2).replace('.',',')
-salary.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL
+salary.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
 
 ```
 				
@@ -224,7 +224,7 @@ function soma (a, b = 1) {
 
 ```JS
 const imprimirSoma = function (a, b) { 
-	console.log(a+b)
+	console.log(a + b)
 }
 ```
 
@@ -232,7 +232,7 @@ const imprimirSoma = function (a, b) {
 
 ```JS
 const soma = () => {
-	console.log(a+b)
+	console.log(a + b)
 }
 ```
 
@@ -284,7 +284,7 @@ console.log(minhaFuncao()) // Mostra 'Local' no console
 
 ```JS
 function myDisplayer (some) {
-document.getElementById("demo").innerHTML = some;
+	document.getElementById("demo").innerHTML = some;
 }
 
 function myCalculator(num1, num2) {
