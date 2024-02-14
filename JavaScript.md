@@ -49,67 +49,86 @@ As váriaveis podem ter três tipos de declarações distintas:
 	
 JS é um linguagem fracamente tipada, ou seja, uma mesma variável pode receber diretentes tipos de dados:
 
-	let teste = 'olá'
-	teste = 1
-	
+```JS
+let teste = 'olá'
+teste = 1
+```
+
 Assim como nas demais linguagem JS possui tipo de dados básicos:
 
-<code>Number:</code>
+`Number:`
 
-    const peso = 1;
-    const peso1 = Number('2.0')
+```JS
+const peso = 1;
+const peso1 = Number('2.0')
+```
 
-<code>String:</code>
+`String:`
 
-    const nome = "Arthur";
-    nome.charAt(3);
-    nome.substirng(0,3)
-    
-<code>Boolean:</code>
+```JS
+const nome = "Arthur";
+nome.charAt(3);
+nome.substirng(0,3)
+```
 
-    let isAtivo = true;
-    isAtivo = false;
-    console.log(!!isAtivo)
+`Boolean:`
 
-<code>Template Strings: </code>
+```JS
+let isAtivo = true;
+isAtivo = false;
+console.log(!!isAtivo)
+```
 
-	const nome = 'Layla'
-	const concatenar = 'Ola' + nome + '!'
-	const template = `Olá ${nome} !`
-	console.log(`1 + 1 = ${nome})
+`Template Strings: `
 
-<code>Arrays</code>
+```JS
+const nome = 'Layla'
+const concatenar = 'Ola' + nome + '!'
+const template = `Olá ${nome} !`
+console.log(`1 + 1 = ${nome}`)
+```
+
+`Arrays`
 
 Em JS os Arrays tem a cabacidade de amarzenar informação que possuem várias tipos de dados, ou seja, são capazes de armazenar dados heterogênios.
 
-	const valores = [0, 1, 2, 3]
-	valores[4] // undefined
-	valores.push({id: 3}, true, 'olá', null)
-	valores.pop()
-	delete valores[0]
+```JS
+const valores = [0, 1, 2, 3]
+valores[4] // undefined
+valores.push({id: 3}, true, 'olá', null)
+valores.pop()
+delete valores[0]
+```
 
-<code>NULL e Undefined</code>
+`NULL e Undefined`
 
 Embora não seja recorrente e indicado, em JS é possível inicializar variáveis com *null* e com o *undefined*
 
-	let valor // não inicializada
-	console.log(valor) // Undefined
-	console.log(valor1) // Is not defined
-	valor = null // ausencia de valor
-	console.log(valor) // null
+```JS
+let valor // não inicializada
+console.log(valor) // Undefined
+console.log(valor1) // Is not defined
+valor = null // ausencia de valor
+console.log(valor) // null
+```
 
 ## Manipulação de dados:
 
-O sinal de<code> mais(+)</code> pode servir tanto para concatenar como para adição, o que vai variar é o contexto que ta sendo utilizado
+O sinal de` mais(+)` pode servir tanto para concatenar como para adição, o que vai variar é o contexto que ta sendo utilizado
 
-	Number.parseInt(VARIAVEL) // converte para int
-	Number.parseFloat(VARIAVEL) // converte para float
-	Number(VARIAVEL) // converte para um número, o JS verifica a melhor escolha
+```JS
+Number.parseInt(VARIAVEL) // converte para int
+Number.parseFloat(VARIAVEL) // converte para float
+Number(VARIAVEL) // converte para um número, o JS verifica a melhor escolha
+```
+
 			
 Assim como é possível converter uma *String* para *Number*, é possível fazer o caminho inverso também:
 
-	String(VARIAVEL)
-	VARIAVEL.toString()
+```JS
+String(VARIAVEL)
+VARIAVEL.toString()
+```
 
 A string possui bibliotecas que permitem manipulá-las e realizar:
 
@@ -120,14 +139,17 @@ A string possui bibliotecas que permitem manipulá-las e realizar:
 
 Assim como as strings posso formatar de acordo com a minha necessidade os números também:
 
-	var salary = 1500.5
-	salary.toFixed(2)
-	salary.ToFixed(2).replace('.',',')
-	salary.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL
+```JS
+var salary = 1500.5
+salary.toFixed(2)
+salary.ToFixed(2).replace('.',',')
+salary.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL
+
+```
 				
 ### Operadores:
 
-<code>Aritmeticos:</code>
+`Aritmeticos:`
 
 	▸ mais (+)
 	▸ menos (-)
@@ -136,7 +158,7 @@ Assim como as strings posso formatar de acordo com a minha necessidade os númer
 	▸ módulo (%)
 	▸ potência (**)
 
-<code>Atribuição:</code>
+`Atribuição:`
 
 	▸ var n = 3;
 	▸ n = n + 4 // n += 4
@@ -148,7 +170,7 @@ Assim como as strings posso formatar de acordo com a minha necessidade os númer
 	▸ n = n += 1 // n++ ou ++n
 	▸ n = n - 1 // n-- ou --n
 
-<code>Relacionais:</code>
+`Relacionais:`
 
 	▸ maior que (>)
 	▸ menor que (<)
@@ -160,13 +182,13 @@ Assim como as strings posso formatar de acordo com a minha necessidade os númer
 
 <em>obs: Sempre gera um resultado booleano como resultado da comparação!</em>
 
-<code>Lógicos:</code>
+`Lógicos:`
 
 	▸ ! (negação)
 	▸ && (conjução/e)
-	▸ || (disjunção/
+	▸ || (disjunção)
 				
-<code>Ternários:</code>
+`Ternários:`
 
 	▸ ? : 
 	teste ? true : false
@@ -180,35 +202,45 @@ Assim como as strings posso formatar de acordo com a minha necessidade os númer
 
 Função são escopos separados que realizam determinada atividade programada pelo o usuário, por terem escopos próprios às vezes é necessário passar parâmetros para que sejam capazes de lidar com dados e afins. Em JS podemos ter funções de várias formas, como por exemplo:
 
-<code>Função sem retorno:</code>
-			
-	function imprimeSoma(a, b) {
-		console.log(a + b)
-	}
+`Função sem retorno:`
 
-<code>Função com retorno:</code>
+```JS			
+function imprimeSoma(a, b) {
+	console.log(a + b)
+}
+```
 
-	function soma (a, b = 1) {
-		return a + b
-	}
+`Função com retorno:`
+
+```JS
+function soma (a, b = 1) {
+	return a + b
+}
+```
 
 <em>obs: b recebe um valor padrão para o caso de seu valor não ter sido passado por parametro</em>
 
-<code>Função anonima:</code>
+`Função anonima:`
 
-	const imprimirSoma = function (a, b) { 
-		console.log(a+b)
-	}
+```JS
+const imprimirSoma = function (a, b) { 
+	console.log(a+b)
+}
+```
 
-<code>Arrow function:</code>
+`Arrow function:`
 
-	const soma = () => {
-		console.log(a+b)
-	}
+```JS
+const soma = () => {
+	console.log(a+b)
+}
+```
 
-<code>Com retorno implicito:</code>
+`Com retorno implicito:`
 
-	const subtracao = (a,b) => a - b
+```JS
+const subtracao = (a,b) => a - b
+```
 
 Como dito, funções possuem escopos, isso faz com que uma função declarada no escopo *global* tenha acesso as váriaveis presente neste escopo *global*.
 
@@ -231,68 +263,147 @@ Uma função recursiva é aquele onde a função chama ela mesma. EM JS ela pode
 
 Closure é um escopo criado quando uma função é declarada. Esse escopo permite a função acessar e manipular variáveis externas à função:
 
-    const x = 'Global'
-    function fora () {
-        const x = 'Local'
-        function dentro () {
-            return x
-        }
-        return dentro
-    }
-    const minhaFuncao = fora()
-    console.log(minhaFuncao()) // Mostra 'Local' no console
-				
+```JS
+const x = 'Global'
+function fora () {
+	const x = 'Local'
+	function dentro () {
+	return x
+	}
+	return dentro
+}
+const minhaFuncao = fora()
+console.log(minhaFuncao()) // Mostra 'Local' no console
+```
+
 ### Callback:
 
 É uma função passada como parametro de uma outra função, que será invocada dentro de uma função externa para completar uma ação/rotina. Ex:
 
-<code>Sem callback:</code>
+`Sem callback:`
 
-	function myDisplayer (some) {
-    	document.getElementById("demo").innerHTML = some;
-	}
+```JS
+function myDisplayer (some) {
+document.getElementById("demo").innerHTML = some;
+}
 
-	function myCalculator(num1, num2) {
-		let sum = num1 + num2;
-	 	myDisplayer(sum);
-	}
+function myCalculator(num1, num2) {
+	let sum = num1 + num2;
+	myDisplayer(sum);
+}
 
-	myCalculator(5, 5);
+myCalculator(5, 5);
 
-<code>Com callback:</code>
+```	
 
-	function myDisplayer(some) {
-		document.getElementById("demo").innerHTML = some;
-	}
+`Com callback:`
 
-	function myCalculator(num1, num2, myCallback) {
-		let sum = num1 + num2;
-		myCallback(sum);
-	}
+```JS
+function myDisplayer(some) {
+	document.getElementById("demo").innerHTML = some;
+}
 
-	myCalculator(5, 5, myDisplayer);
+function myCalculator(num1, num2, myCallback) {
+	let sum = num1 + num2;
+	myCallback(sum);
+}
 
-<code>Outro exemplo:</code>
+myCalculator(5, 5, myDisplayer);
+```
 
-	// Create an Array
-	const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+`Outro exemplo:`
+```JS
+// Create an Array
+const myNumbers = [4, 1, -20, -7, 5, 9, -6];
 
-	// Call removeNeg with a callback
-	const posNumbers = removeNeg(myNumbers, (x) => x >= 0);
+// Call removeNeg with a callback
+const posNumbers = removeNeg(myNumbers, (x) => x >= 0);
 
-	// Display Result
-	document.getElementById("demo").innerHTML = posNumbers;
+// Display Result
+document.getElementById("demo").innerHTML = posNumbers;
 
-	// Keep only positive numbers
-	function removeNeg(numbers, callback) {
-		const myArray = [];
-		for (const x of numbers) {
-			if (callback(x)) {
-				myArray.push(x);
-    		}
+// Keep only positive numbers
+function removeNeg(numbers, callback) {
+	const myArray = [];
+	for (const x of numbers) {
+		if (callback(x)) {
+			myArray.push(x);
 		}
-		return myArray;
 	}
+	return myArray;
+}
+```
+
+## Objetos
+
+Objetos são coleção de dados e/ou funcionalidades (propriedades e métodos) relacionados. 
+Como a maioria das coisas em JS, para criarmos um objeto precisamos inicializar uma variável. Ex:
+
+``` JS
+var pessoa = {}
+console.log(typeof(pessoa))
+```
+
+Veremos que ao printarmos o tipo de pessoa teremos como retorno `[objecto Object]`
+
+No exemplo acima criamos um objeto vazio, a seguir veremos uma forma de criar o objeto de forma literal
+
+```JS
+var pessoa = {
+  nome: ["Bob", "Smith"],
+  idade: 32,
+  sexo: "masculino",
+  interesses: ["música", "esquiar"],
+  bio: function () {
+    alert(
+      this.nome[0] +
+        " " +
+        this.nome[1] +
+        " tem " +
+        this.idade +
+        " anos de idade. Ele gosta de " +
+        this.interesses[0] +
+        " e " +
+        this.interesses[1] +
+        ".",
+    );
+  },
+  saudacao: function () {
+    alert("Oi! Eu sou " + this.nome[0] + ".");
+  },
+};
+```
+
+ Para acessar as propriedades e metodós de um objeto é simples. Veja:
+```JS
+console.log(pessoa.nome);
+console.log(pessoa.nome[0]);
+pessoa.bio()
+```
+
+Saindo do exemplo dado, o modo que criamos um objeto é simples, podendo separar seu atributos por meio de "," e seu nome e valor por meio de ":". A sintaxe padrão obedece a seguinte estrutura:
+
+```JS
+var nomeDoObjeto = {
+  nomeMembro1: valorMembro1,
+  nomeMembro2: valorMembro2,
+  nomeMembro3: valorMembro3,
+};
+```
+
+### Notação ponto
+
+Acima usamos a notação ponto, que é uma forma de acessarmos as propriedades de um objeto
+
+``` JS
+pessoa.idade;
+pessoa.interesse[1];
+pessoa.bio();
+```
+Para que seja acessado primeiro nos referimos ao objeto, colocamos um ponto e após informamos o nome da propriedade.
+
+### Sub-namespace
+
 
 
 ## Eventos com a DOM
