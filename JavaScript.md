@@ -102,7 +102,7 @@ delete valores[0]
 
 `NULL e Undefined`
 
-Embora não seja recorrente e indicado, em JS é possível inicializar variáveis com *null* e com o *undefined*
+Embora não seja recorrente e indicado, em JS é possível inicializar variáveis com `null` e com o `undefined`
 
 ```JS
 let valor // não inicializada
@@ -114,7 +114,7 @@ console.log(valor) // null
 
 ## Manipulação de dados:
 
-O sinal de` mais(+)` pode servir tanto para concatenar como para adição, o que vai variar é o contexto que ta sendo utilizado
+O sinal de `mais(+)` pode servir tanto para concatenar como para adição, o que vai variar é o contexto que ta sendo utilizado
 
 ```JS
 Number.parseInt(VARIAVEL) // converte para int
@@ -404,6 +404,39 @@ Para que seja acessado primeiro nos referimos ao objeto, colocamos um ponto e ap
 
 ### Sub-namespace
 
+Com o uso de `sub-namespace` podemos alterar o valor de um membro de um objeto para outro, fazendo ele mudar de:
+
+```JS
+nome:['Bob', 'Smith'],
+```
+
+para
+
+```JS
+nome: {
+	primeiro: 'Bob',
+	ultimo: 'Smith'
+},
+```
+
+Para conseguirmos acessar essas duas novas propriedades de `nome` precisaremos adicionar um poto ao final do outro ponto e assim acessaremos  a propriedade:
+
+```JS
+pessoa.nome.primero
+```
+
+<em>OBS: vale lembrar que ao realizar essa mudança precisaremos mudar todos os metódos que acessam essa propriedade que não utilizava do sub-namespace</em>
 
 
-## Eventos com a DOM
+### Notação colchete
+
+Além da notação ponto existe a possibilidade de usarmos a notação colchete para acessarmos as propriedades de um objeto.
+
+```JS
+pessoa["idade"];
+pessoa["nome"]["primeiro"];
+```
+
+<em>CURIOSIDADE:
+Essa maneira se parece muito com a forma com que acessamos `arrays`, utilizando indices, no caso do objeto, o nome associado a propriedade.
+Essa caracteristica faz com que os objetos também sejam chamados de <bold>Arryas associativos</bold></em>
