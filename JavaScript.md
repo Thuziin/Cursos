@@ -355,7 +355,7 @@ var pessoa = {
   sexo: "masculino",
   interesses: ["música", "esquiar"],
   bio: function () {
-    alert(
+    console.log(
       this.nome[0] +
         " " +
         this.nome[1] +
@@ -369,7 +369,7 @@ var pessoa = {
     );
   },
   saudacao: function () {
-    alert("Oi! Eu sou " + this.nome[0] + ".");
+    console.log("Oi! Eu sou " + this.nome[0] + ".");
   },
 };
 ```
@@ -440,3 +440,99 @@ pessoa["nome"]["primeiro"];
 <em>CURIOSIDADE:
 Essa maneira se parece muito com a forma com que acessamos `arrays`, utilizando indices, no caso do objeto, o nome associado a propriedade.
 Essa caracteristica faz com que os objetos também sejam chamados de <bold>Arryas associativos</bold></em>
+
+### Setando membros do objeto
+
+Até o momento vimos como receber objetos, mas é possível setar (atualizar) seus valores. Para isso podemos utilizar tanto da notação colchete como da notação ponto.
+
+```JS
+pessoa.idade = 45
+pessoa.["nome"]["ultimo"] = "Santos"
+```
+
+Além de atualizar valores do nosso objeto, podemos também criar propriedades e métodos.
+
+```JS
+pessoa["olhos"] = "castanho";
+pessoa.despedida = function () {
+  console.log("Adeus a todos!");
+};
+```
+
+Um vantagem da notação colchete é que conseguimos criar dinamicamente o nome e o valor de um propridade e objeto, por exemplo.
+
+```JS
+var myDataName = 'nomePropriedade';
+var myDataValue = 'valorPropriedade	';
+pessoa[myDataName] = myDataValue;
+```
+
+<em>OBS: a notação ponto so permite a passagem de valores literais, por isso não é possível criar dados dinamicamente como na notação colchete</em>
+
+### O que é o 'this'
+
+O "this" é uma palavra chave utilizada para se referir ao objeto atual do código que está sendo escrito, ou seja, considerando os exemplos acima, o `this` seria equivalente a `pessoa`.
+Quando criamos objeto literais o `this` acaba não sendo muito util, mas no caso da criação de mais de objeto, ele permite o uso de um mesmo método para cada objeto criado. Exemplo:
+
+```JS
+var pessoa1 = {
+  nome: "Chris",
+  saudacao: function () {
+    console.log("Oi! Meu nome é " + this.nome + ".");
+  },
+};
+
+var pessoa2 = {
+  nome: "Brian",
+  saudacao: function () {
+    console.log("Oi! Meu nome é " + this.nome + ".");
+  },
+};
+```
+
+### Introdução aos constructors
+
+A criação de objetos literais é boa quando temos que criar somente um objeto, mas imagine se tivessemos que criar mais de um (como no exemplo anterior), ou que quisessemos mudar ou acrescentar um propriedade a esses objetos. Seria mais trabalhoso.
+Nós gostariamos de criar uma "forma" para o objeto e definir metodos e propriedades, e depois criamos quantos objetos quisessemos com base naquela "forma".
+Uma forma que poderiamos fazer é com o uso de uma função:
+
+```JS
+function createPerson(name) {
+	const obj = {};
+	obj.name = name;
+	obj.introduceSelf = function () {
+		console.log(`Hi! I'm ${this.name}.`);
+	};
+	return obj;
+}
+
+const salva = createPerson("Salva");
+salva.introduceSelf(); // Hi! I'm Salva.
+
+const frankie = createPerson("Frankie");
+frankie.introduceSelf(); // Hi! I'm Frankie.
+```
+
+Todas as vezes que invocamos essa função criamos um objeto vazio, com a propriedade "name" e com o método "introduceSelf()", e somente após inicializarmos o nosso objeto, retornamos ele.
+Esse trabalho que fizemos é longo. Porém podemos utilizar do *construtor*, que também é uma função, que será invocada com o uso da palavra `new`. Ao chamar o construtor ele fará:
+* Criar um objeto
+* Marcar o `this` com o novo objeto, para que possa ser referenciado com o `this` no construtor
+* Rodar o código no construtor
+* Retornar o um novo objeto
+
+Por convenção, os construtores começam com a primeira letra sendo maiúscula, e sendo nomeados de acordo com o tipo de objeto que está sendo criado. Reescrevendo o exemplo acima teriamos:
+
+```JS
+function Person(name) {
+	this.name = name;
+	this.introduceSelf = function () {
+		console.log(`Hi! I'm ${this.name}.`);
+	};
+};
+
+// Para chamar Person() como construtor usaremos o 'new'
+
+const salva = new Person("Salva")
+salva.name;
+salva.introduceSelf(); // Hi! I'm Salva.
+```
