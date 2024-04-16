@@ -1,164 +1,174 @@
-# Arquivos
-## Abertura de Arquivos
-A abertura de um arquivo existente num suporte magnético a uma variável do nosso programa. No entanto, C possui apenas tipos *char*, *int*, *float* e *double*, sendo que eles não se referem a arquivos.
-Para podermos usar um arquivos precisamos declarar uma variável do tipo <code>FILE</code> (presente na biblioteca <code><stdio.h></code>
+# C
+## Panorama histórico
+A linguagem C surge em 1972 nos laboratórios da Bell, sendo que a mesma foi projetada para ser uma linguagem de propósito geral.
 
-```
-FILE* arquivo; // Declaramos um ponteiro para o arquivo
-```
+A lingaugem foi padronizada pela ISO, pois um grande número de implementações e compiladores foram criados.
 
-A abertura de fato do arquivo se dá pelo o uso da função <code>fopen</code>
-```
-FILE * fopen(nomeArquivo, operacaoSobreArquivo);
-```
+C é uma das linguagens mais importante, pois ajudou na contrução de milhares de softwares, além de inspirar a criação de outras linguagens de programação
 
-### Modos de abertura
-Existem três modo de abertura de arquivos:
-	<ul>
-		<li>r</li>
-		<li>w</li>
-		<li>a</li>
-	</ul>
-O modo <strong>r</strong>:
+## Características
+- É uma linguagem imperativa: baseada em comandos e dados;
+- Uma linguagem estruturada: os programas são baseados em sequências de comandos e decisões;
+- Compilada: um compilador é utilizado para gerar programas executáveis
 
-É o modo de leitura, tenta ler um arquivo e caso não consiga retorna <code>NULL</code>
+### Compilador
+O compilador é um software básico da computação que tem por objetivo ler um programa escrito em uma linguagem fonte e gerar um programa equivalente em uma linguagem alvo.
 
-O modo <strong>w</strong>:
+O programas em C são arquivos com extensão `.c`. A compilação dele gera um executável `.exe`. 
 
-Abre um arquivo para a escrita, se existir um arquivo com o mesmo nome apaga o antigo e cria um novo com mesmo nome e novos dados. Caso não consiga realizar a operação retorna <code>NULL</code>
+Para compilarmos os programas gerados usamos compiladores, algum deles são:
+- GCC
+- Clang
+- IBM
 
-O modo <strong>a</strong>:
+## Tipos de dados
+|Tipos                   |Palavra chave         |
+|------------------------|----------------------|          
+| caracterere            | char                 |
+| inteiro                | int                  |
+| real (precisão simples)| float                |
+| real (precisão dupla)  | double               |
+| void                   | void                 |             
 
-Abre o arquivo para acrescentar informação. Este modo acrescenta informção ao final do arquivo que teve nome passado como parametro, se o arquivo não existir cria um novo e escreve os dados no inicio do arquivo. Caso não consiga realizar a operação retorna <code>NULL</code>
-		
-Além destes três modos básicos existe a possibilidade de abrir um arquivo simultaneamente para a leitura e escrita, sendo os modos:
+### Modificadores
 
-<ul>
-	<li>
-		<code>r+</code>
-	</li>
-	<li>
-		<code>w+</code>
-	</li>
-	<li>
-		<code>a+</code>
-	</li>
-</ul>
+|Modificador             |Descrição         |
+|------------------------|------------------|          
+| signed            	 | char             |
+| unsigned               | int              |
+| long 					 | float            |
+| short   				 | double           |
 
-#### Modo de Texto e Modo Binário
-Por padrão qualquer arquivo em C quando aberto é considera do tipo texto, ou seja, o conteúdo em seu interior consiste em carateres que não estão presentes na tabela ASCII. Por sua vez os arquivos binários tem como conteúdo informações que achariamos na tabela ASCII e será lido byte a byte.
+### Operadores aritiméticos
 
-Para poder realizar a leitura de um arquivo binário precisamos indicar ao nosso programa que realizará tal ação da seguinte forma:
+|Operador      |Operação        |
+|--------------|----------------|          
+| -            | troca de sinal |
+| -            | subtração      |
+| +            | soma           |
+| *            | multiplicação  |
+| /            | divisão        |
+| %            | módulo         |
+| ++           | incremento     |
+| --           | decremento     |
 
-```
-rb;
-wb;
-ab;
-a+b;
-...
-```
-## Fechamento de um arquivo
-Sempre que estamos lidando com arquivos é considerado um bom hábito fechar o arquivos que estava sendo lidado, por mais que isso seja realizado automaticamente ao finalizar um programa.
-
-Para podermos realizar tal tarefea usamos a função <code>fclose</code>
-
-```C
-fclose(FILE *arquivo)
-```
-
-Exemplos usando abertura, operação e fechamento de um arquivo:
+## Programas Sequenciais
+Abaixo um programa sequencial em **C** com o uso de dados apresentados acima e com entrada e saída de dados.
 ```C
 #include <stdio.h>
 
-int main () {
-	FILE *fp;
-	char s[100];
-	
-	puts("Nome do arquivo: ");
-	gets(s);
-	
-	fp = fopen(s, "r");
-	
-	if (fp == NULL) {
-		printf("Não foi possível ler o arquivo\n");
-	} else {
-		printf("Leitura realizada com sucesso\n");
-		fclose(fp);
-	}
-	return 0;
+void main () {
+	int a, b, soma;
+	printf("Digite o primeiro numero: "); // Saida de dados
+	scanf("%d", &a) // Leitura e armazenamento do dado
+
+	printf("Digite o segundo numero: ")
+	scanf("%d", &b);
+
+	soma = a + b;
+
+	printf("A soma de %d e %d e igual a %d", a, b, soma);
 }
 ```
 
-## Leitura de caractere
+## Comandos condicionais
+### Operadores relacionais
 
-Para realizar a leitura de caracteres presentes em um arquivos usamos a função <code>fgetc(arquivo)</code>
+|Operador      |Descrição       |
+|--------------|----------------|          
+| >,>=,<,<=>   | comparação     |
+| ==           | igualdade      |
+| !=           | diferença      |
 
-Exemplo:
+### Operadores lógicos
+
+|Operador      |Operador        |
+|--------------|----------------|          
+| !            | negação        |
+| &&           | AND            |
+| \|\|         | OR             |
+
+*Obs:* A ordem de precedência dos operadores é negação, E e OU.
+
+### if (se)
+
+Em uma condição com <code>if</code> a "resposta" será uma valor lógico (true ou false)
+
 ```C
-#include <stdio.h>
-#include <stdlib.h>
+if (condicao) comando;
 
-int main (int argc, char *argv[]) {
-	FILE *arquivo;
-	int ch; // inteiro para ler caracteres
-	
-	if (argc != 2) {
-		exit(1);
-	}
-	
-	arquivo = fopen(argv[1], "r"):
-	
-	if (arquivo == NULL) {
-		printf("Impossível de ler o arquivo\n");
-		exit(2);
-	}
-	
-	while ((ch=fgetc(arquivo) != EOF) {
-		putchar(ch);
-	}
-	fclose(arquivo);
-	return 0;
+if (condicao) {
+	lista de comando
 }
 ```
 
-No código acima temos tratamento de erros (encerrando) o programa caso não seja possível ler o arquivo. Caso consigamos ler o arquivo mostramos na tela caractere a caractere até "chegarmos" ao 'EOF'
-
-*OBS: o nome do arquivo é passado como parametro pro meio do <code>argv</code>, ou seja, na hora de exercutarmos o código no terminal*
-
-## Escrita de um carcatere em um arquivo
-
-Assim como podemos ler os caracteres de um arquivo podemos também escrever caracteres em um arquivo. A escrita pode ser realizada por meio da função <code>fputc()</code>
+Um exemplo seria um programa que ler um valor inteiro e informa se o número é positivo:
 
 ```C
 #include <stdio.h>
-#include <stdlib.h>
 
-int main (int argc, char *argv[]) {
-	FILA *fin, *fout;
-	int ch;
-	
-	if (argv != 3){
-		exit(1);
-	}
-	
-	fin = fopen(argv[1], "rb");
-	if (fin == NULL) {
-		printf("Impossível ler o arquivo\n");
-		exit(2);
-	}
-	
-	
-	if ((fout = fopen(argv[2], "wb") == NULL) {
-		printf("Impossível de criar arquivo para escrita\n"):
-		exit(3);
-	}
-	
-	while (ch = fgetc(fin) != EOF) {
-		fpuct(ch, fin);
-	}
-	fclose(fin);
-	fclose(fout);
-	
-	return 0;
+void main () {
+	int dado;
+
+	printf("Informe um valor inteiro: ");
+	scanf("%d", &dado);
+
+	if (dado > 0) // caso seja uma valor logico verdadeiro executa o bloco abaixo
+		printf("\nE positivo");
+}
+```
+
+### if-else (se-senao)
+
+```C
+if (condicao) comando;
+else comando;
+
+if (condicao) {
+	lista de comando;
+} else {
+	lista de comando
+}
+```
+
+Um exemplo de uso seria o comando a seguir:
+-Um programa para ler a nota final e a frequência de um aluno e informar se ele foi aprovado ou reprovado. Para ser aprovado, o aluno deve ter a nota maior ou igual a 60 e a frequência maior ou igual a 75. Caso contrário, o aluno é reprovado.
+
+```C
+#include <stdio.h>
+
+void main(){
+	float nota, freq;
+
+	printf("Digite a nota do aluno: ");
+	scanf("%f", &nota);
+
+	printf("\nDigite a frequencia do aluno: ");
+	scanf("%f", &freq);
+
+	if ( nota >= 60 && freq >= 75)
+		printf("\nFoi aprovado.");
+	else
+		printf("\nNao foi aprovado.");
+}
+
+```
+
+### switch-case
+Quando se é necessário verificar o valor de uma variável **inteira** ou **caractere** é igual a um conjunto conhecido e finito de
+valores, pode-se utilizar o comando <code>switch-case</code>.
+
+O comando switch-case corresponde a uma sequência de comandos do tipo <code>if-else</code>
+
+
+A vantagem de usá-lo em vez do <code>if-else</code> é que torna o código mais legível. A sua sintaxe é:
+
+```C
+switch (expressao) {
+	case expressao: comandos;
+		break; // necessário para que as demais clausulas nao sejam executadas também
+	case expressao: comandos;
+		break;
+	default: comandos // caso nenhuma das outras cláusulas seja verdadeira
 }
 ```
