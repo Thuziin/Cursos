@@ -318,3 +318,72 @@ void main () {
 	}
 }
 ```
+
+## Vetores
+Um vetor é um tipo de dado que representa um conjunto de dados do mesmo tipo e referenciados por um só nome.
+
+
+![Imagem com representação de um vetor](./image/vetores.PNG)
+
+### Declaração
+- tipo nome[tamanho];
+
+```C
+float notas[10];
+char nome[100];
+int idade[25];
+```
+
+### Acesso aos elementos
+Os elementos de um vetor são indexados a partir de 0 até N-1 (N é o tamanho do vetor):
+- nome[posicao]
+
+```C
+soma = nota[0] + nota[6];
+```
+
+### Inicialização
+Caso os valores do vetores já sejam conhecidos, ele pode ser inicializado com a seguinte sintaxe
+- tipo nome[tamanho] = { valores };
+
+*obs:* os valores são separados por virgula (,)
+
+```C
+int idade[5] = {0, 1, 2, 3, 4};
+```
+
+A inicialização dos vetores pode também omitir o tamanho do vetor
+- tipo nome[] = { valores };
+
+```C
+int diasMes[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+```
+
+*Obs: é util aplicar uma variável para armazenar o índice do vetor*
+
+Exemplo: um programa para ler as idades de 10 pessoas e imprimir a maior unidade
+
+```C
+#include <stdio.h>
+
+void main () {
+	int idade[10], maior = 0;
+	int i;
+
+	for (i = 0; i < 10; i++) {
+		printf("\nDifite a idade: ");
+		scanf("%d", &idade[i]);
+	}
+
+	maior = idade[0];
+
+	for (i = 1; i < 10; i++) 
+		if (idade[i] > maior) maior = idade[i];
+
+	printf("\nA maior idade e %d", maior);
+}
+```
+
+### CUIDADOS AO USAR VETOR
+Ao utilizar vetores é necessário assegurar que o programa não acessará uma área de memória fora dos limites do vetor. A linguagem C não faz verificação em tempo de compilação.
+Portanto essa situação é um erro de lógica que gera um erro em tempo de execução.
