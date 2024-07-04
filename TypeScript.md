@@ -7,58 +7,68 @@ Existem duas formas de si instalar o [typescript](https://www.typescriptlang.org
 ### TypeScript on my project
 
 Primeiramente preciso inicializar o meu projeto, para isso faço (com npm):
-```
+
+```zsh
 npm init -y
 ```
 
 Após a inicialização podemos instalar o *TypeScript* localmente como depedência de desenvolvimento com o seguinte comando:
-```
+
+```zsh
 npm install typescript --save-dev
 ```
 
 Após a intalação é necessário criar um arquivo de configuração do typescript. Todas as configurações do type ficam em uma arquivo chamado *tsconfig.json* e para criá-lo é necessário fazer:
-```
+
+```zsh
 npx tsc --init
 ```
 
 OBS: o arquivo criado possui as configurações e as explicações de cada "tópico"
 
 A configuração estar realizada, para "executar" nosso projeto usamos:
-```
+
+```zsh
 npm init
 ```
 
 ### Globaly instaling TypeScript
 
 A instalação global do TypeScript é mais interessante quando se tem um 'compromisso' a longo termo, ou seja, quando será utilizado em mais de um projeto, sendo assim podemos usar o comando <code>tsc</code> em qualquer no nosso terminal que será reconhecido. Para isso basta executar o comando:
-```
+
+```zsh
 npm install -g typescript
 ```
 
 Assim como na instalação do ambiente local criaremos o nosso projeto com
-```
+
+```zsh
 npm init -y
 ```
 
 Podemos também criar o arquivo de configuração com:
-```
+
+```zsh
 npm  tsc --init
 ```
 
 E inicializaremos o nosso projeto com:
-```
+
+```zsh
 npm init
 ```
 
 Para podermos executar agora o nosso arquivo .ts usaremos o seguinte comando:
-```
+
+```zsh
 npx tsc
 ```
 
 Este comando compilará o nosso arquivo .ts de acordo com o <code>tscongif.json</code>
 
-Para podermos agora transcrever o nosso código de <code>TypeScript</code> para <code>JavaScript</code> usaremos o seguinte comando: 
-```
+Para podermos agora transcrever o nosso código de <code>TypeScript</code> para <code>JavaScript</code> usaremos o seguinte comando:
+
+```zsh
 node 'nomedoarquivo.js'
 ```
 ## Tipo básicos e Inferência de tipos
@@ -69,15 +79,17 @@ Assim como no *JS* os tipos de dados básicos em *TypeScript* são:
     <li> number</li>
     <li> boolean</li>
 </ul>
+
 Em ambas as linguagens não é necessário informar o tipo de dado que a minha variável irá armazenar, no entando em *Type* podemos "forçar" isso para evitar algum bug por exemplo, para isso podemos fazer:
 
-```
+```ts
 let nome: string
 nome = 'Arthur'
 ```
 O código acima faz com que minha varável <strong>nome</strong> receba informações somente do tipo string.<br>
 Além de conseguirmos indicar que tipo queremos que nossa váriavel seja podemos também deixar o *Type* 'deduzir' em que tipo que ela se encaixa. Observe:
-```
+
+```ts
 let numero = 3
 ```
 Ao fazer isso e se passar o mouse sobre o comando veremos que o *Type* deduziu que <strong>numero</strong> fosse do tipo number e caso tentemos fazer ela receber uma string receberemos um erro
@@ -86,7 +98,7 @@ Assim como as váriaveis de tipos de dados básicos, é possível atribuir para 
 
 ### Array
 
-```
+```ts
 let nome: string[]
 let nome1: Array<string>
 
@@ -94,7 +106,7 @@ let teste: Array<boolean>
 ```
 
 ### Tupla
-```
+```ts
 let aluno: [string, number, boolean]
 aluno = ['Arthur', 20, true]
 
@@ -103,7 +115,7 @@ let aluno1: any[]
 
 ### Objeto
 
-```
+```ts
 let objeto: objectx
 
 let objeto1: Record<string, number/string/boolean>
@@ -116,7 +128,7 @@ objeto2 = {nome:'Arthur', idade: 10, ehLegal: true}
 
 ### Função
 
-```
+```ts
 function nada() : void {}
 
 function soma(a: numer, b: number): number {
@@ -138,7 +150,7 @@ const soma2 = (a: number, b: number): number => a + b
 
 Vamos supor que estamos montando o front-end da nossa aplicação e queremos mostrar um *id*, no entanto esse *id* vem do nosso *banco de dados* e em um deles está salvo como <code>Number</code> e no outro como <code>String</code>. Podemos criar uma váriavel que conseguirá receber essa informação e que receberá este *id* dentro deste dois tipos.
 
-```
+```ts
 let id = number | string
 ```
 
@@ -146,7 +158,7 @@ let id = number | string
 
 Considerando a mesma situação anterior, só que dessa vez temos vários *ids*, em vem de fazer um <code>Union</code> para cada um podemos criar um tipo e em seguida tiparmos eles.
 
-```
+```ts
 type Id = number | string | ...
 
 let id1: Id
@@ -166,7 +178,7 @@ let user: Usuario
 
 No exemplo acima criamos um <code>Type Alias</code> para criar um objeto, no entao existe uma outra forma de se fazer isso, que seria com o <code>Interface</code>
 
-```
+```ts
 interface Usuario {
     nome: string
     idade: number
@@ -185,7 +197,7 @@ Um recurso que o *TypeScript* fornece é a capacidade de exterdemos um intarface
 
 ### Extendendo Interface
 
-```
+```ts
 interface Pessoa {
     nome: string
     idade: number
@@ -201,7 +213,7 @@ let aluno: Aluno // agora o aluno tem acesso as informações de Pessoa e Aluno
 
 ### Inteface e Type
 
-```
+```ts
 type Pessoa = {
     nome: string
     idade: number
@@ -219,7 +231,7 @@ Assim como de Interface para Interface o Inteface para Type também funciona, ne
 
 Para extender de um tipo para o outro a lógico é diferente, no entanto o funcionamento do código será o mesmo, veja:
 
-```
+```ts
 type Pessoa = {
     nome: string
     idade: number
@@ -235,7 +247,7 @@ type Aluno = Pessoa & {
 
 Nos exemplos acimas criamos objetos onde todos os campos são usado, mas pode acontecer de existir algum campo que não seja obrigatório de preencher, por isso temos o recurso de indicar que ele é opcional sem corrermos o risco de algum erro acontecer.
 
-```
+```ts
 type Pessoa = {
     nome: string
     idade: number
@@ -261,14 +273,14 @@ Ao tentarmos criar o objeto aluno não teremos erros, pois indicamos que o carro
 
 Anteriormente vimos que:
 
-```
+```ts
 let nome1: Array<string>
 ```
 Desta forma criávamos um <code>Array</code> usando <code>Generics</code>.
 
 Veremos que também podemos fazer isso com os tipos de dados que criarmos, da seguinte forma:
 
-```
+```ts
 interface Pessoa<T = undefined> {
     nome: string
     idade: number
