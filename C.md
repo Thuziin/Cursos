@@ -384,6 +384,142 @@ void main () {
 }
 ```
 
-### CUIDADOS AO USAR VETOR
+#### CUIDADOS AO USAR VETOR
 Ao utilizar vetores é necessário assegurar que o programa não acessará uma área de memória fora dos limites do vetor. A linguagem C não faz verificação em tempo de compilação.
 Portanto essa situação é um erro de lógica que gera um erro em tempo de execução.
+
+## Comandos e recursos em C
+### Atribuição Composta
+
+| Operador     | Operação                    | Exemplo| Equivalência|
+|--------------|-----------------------------|--------|-------------|          
+| +=           | Atribuição com soma         | a += b | a = a + b   |
+| -=           | Atribuição com subtração    | a -= b | a = a - b   |
+| *=           | Atribuição com multiplicação| a *= b | a = a * b   |
+| /=           | Atribuição com divisão      | a /= b | a = a / b   |
+| %=           |Atribuição com resto da divisão inteira| a %= b | a = a % b |
+
+### Atribuição a mais de uma variável
+
+A linguagem C possui um recurso que permite com que um valor resultante seja atribuido a mais de uma variável com somente um comando, segundo a seguinte sintaxe
+
+```C
+tipo var1 = var2 = var3 = expressao
+```
+
+Sendo que a ordem de execução de atribuição ocorre da direita para a esquerda.
+
+### Definição de constantes
+
+Uma forma de se definir constantes é utilizar a palavra diretiva do pré-processador **#define**. Usar a diretiva define informa ao pré-processador que deverá substituir a ocorrencia da palavra defina pela constante informa. Exemplo:
+
+```C
+#define TAM 10
+```
+
+Uma outra forma de se declara constante é utilizando a palavra **const**. Neste caso, uma posição de memória será reservada em tempo de execução, porém o seu valor não poderá ser altera depois. Exemplo:
+
+```C
+const float TAXA = 10;
+```
+
+### Conversão de dados e *cast*
+
+Conversão é um tipo de operação que o compilador realiza para converter um tipo de dado (ex: tratar um numero inteiro como real). Há tipos de conversões que são feitas implicitamente, ou seja, nenhum comando é necessário. Porém existem casos que demandam o uso de comando explicitamente.
+
+Exemplo:
+ -  Se um dos operandos de um expressão aritmética for float, o outro operando
+é convertido para float e o resultado da operação é um float (implicita)
+ - float (a/b)
+
+### Comandos break e continue
+
+O comando **break** é utilizado em um loop para força o seu encerramento, ou seja, o loop se encerra imediatamente e a próxima intrução é executada.
+
+```C
+for(i=0; i<TAM; i++)
+ if (vet[i] == val) break;
+```
+
+O comando **continue** por sua vez faz com que o fluxo de execução do programa seja desviado para o inicio do loop imediatamente. Exemplo: 
+
+```C
+while( (ch=getchar()) != '.' ){
+ if (ch >= '0' && ch <= '9') continue;
+ printf("%c", ch);
+}
+```
+
+#### Loop infinito
+
+O loop infinito ocorre quando a condição de parada do mesmo nunca é alcançada. Isso pode acontecer devido a um erro de lógica, ou porque o programador estabeleceu um loop infinito, já que a linguagem permite, embora não seja recomendado o seu uso.
+
+No segundo caso seria necessario o uso do comendo **break** no corpo do loop
+
+### String
+
+Uma string é uma cadeia de caracteres. Em C, uma string é definida como um vetor de caracteres (Ex: char nome[50]).
+
+#### Inicialização
+
+Podemos iniciar uma string de duas formas:
+
+```C
+char nome[50] = "Maria";
+char nome[50] = {'M','A','R','I','A'};
+```
+
+Vale ressaltar que em C o final de uma string é marcada com o caractere **'\0'**
+
+#### Leitura
+
+A leitura pode ser feita utilizando duas função, *scanf* e *gets*. Exemplo de uso:
+
+```C
+char str[50];
+printf("Digite uma string: ");
+scanf("%s",str);
+
+char str[50];
+printf("Digite uma string: ");
+gets(str); // Para utilizar o gets é necessário incluir a biblioteca conio.h
+```
+
+#### string.h
+
+A biblioteca <code>string.h</code> possui funções úteis para a manipulação de strings, dentre elas: 
+
+#### strlen
+Retorna a quantidade de caracteres contidos na string
+
+#### strcat
+Concatena a str1 e str2 e armazena o resultado na string str1
+
+#### strncat
+Concatena os primeiros n caracteres da str1 e str2 e armazena o resultado na string str1
+
+
+#### strcpy
+Copia a string str2 para a string str1. Caso str2 seja maior que str1, pode acontecer um erro em tempo de execução.
+
+#### strncpy
+Copia os n primeiros caracteres da string str2 para a string str1. Caso str2 seja maior que str1, pode acontecer um erro em tempo de execução.
+
+#### strcmp
+Compara str1 com str2 lexicograficamente e devolve:
+ - valor negativo, caso str1 seja menor do que str2;
+ - zero, caso str1 seja igual a str2;
+ - valor positivo, caso str1 seja maior do que str2.
+
+#### strncmp
+Compara str1 com str2 lexicograficamente, considerando os n primeiros caracteres das strings e devolve:
+ - valor negativo, caso str1 seja menor do que str2;
+ - zero, caso str1 seja igual a str2;
+ - valor positivo, caso str1 seja maior do que str2.
+
+
+## Adendo
+
+- Pré-pocessador: parte do sistema de processamento de linguagem de C que prepara o arquivo para ser compilado
+- Diretiva: instrução ao pré-processador sobre algo que deve realizar no programa a ser compilado
+- Operador ternário: exp1? exp2 : exp3.
