@@ -517,6 +517,47 @@ Compara str1 com str2 lexicograficamente, considerando os n primeiros caracteres
  - zero, caso str1 seja igual a str2;
  - valor positivo, caso str1 seja maior do que str2.
 
+## Matrizes
+
+Uma matriz é um conjunto de dados do mesmo tipo, referenciados por um nome. Uma matriz pode ter de uma a várias dimensões (um vetor é uma matriz de uma dimensão - unidimensional).
+Em uma matriz bidimensional, por exemplo, são necessários dois índices para referenciar os seus elementos: o índice da linha e o da coluna.
+
+### Declaração
+
+Quando se conhece as dimensões das matrizes podemos declará-la com a seguinte sintaxe:
+
+```C
+ tipo nome[linhas][colunas] // linhas e colunas se referem quantidade de cada dimensão
+```
+### Acesso
+
+Para se referenciar um determinado elemento de uma matriz utiliza-se a seguinte sintaxe:
+
+```C
+ nome[linha][coluna];
+ notas[0][3] = 10.0;
+ val = notas[6][4];
+```
+
+É útil também utilizarmos variáveis para armazenar os índices de um elemento de uma matriz. Exemplo:
+
+```C
+ float notas[linha][coluna];
+ for (int i = 0; i < linha; i++) {
+	for (int j = 0; j < colunas; j++) {
+		notas[i][j] = 10;
+	}
+ }
+```
+
+### Inicialização
+
+Podemos inicializar uma matriz de algumas formas diferentes, uma forma é como mostrado no exemplo acima, utilizando um <code>for</code>, a outra forma é a seguinte:
+
+```C
+ tipo nome[linha][coluna] = {{valores}, {valores}};
+ int matriz[4][3] = {{0,0,0}, {1,1,1}, {2,2,2}, {3,3,3}};
+```
 
 ## Adendo
 
