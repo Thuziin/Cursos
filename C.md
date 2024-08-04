@@ -559,6 +559,59 @@ Podemos inicializar uma matriz de algumas formas diferentes, uma forma é como m
  int matriz[4][3] = {{0,0,0}, {1,1,1}, {2,2,2}, {3,3,3}};
 ```
 
+## Função
+
+Um programa que é escrito sem *subdivisões* se torna mais difícil de ler e de se realizar manutenções. Em um programa essas subdivisões são chamadas de **funções**.
+
+Uma função é uma parte do código que realiza um tarefa específica, e essa tarefa só é executada quando uma outra parte do programa a chama. Quando essa tarefa é finalização a função retorna a execução para o ponto do programa que a chamou.
+
+Até o momento o usando somente funções implementadas na biblioteca da linguagem C (printf, scanf, getchar, etc.). Um programa pode ter quantas funções forem necessárias.
+
+*OBS: toda programa em C se inicia pela função **main** que invoca outras funções*
+
+### Forma de uma função
+
+A estrutura de uma função segue uma determinada forma:
+
+```C
+tipo_do_retorno nome_funcao( parametros ) {
+	corpo_funcao
+}
+```
+
+Aonde o *tipo_do_retorno* indica o tipo de dado que a função irá retornar como resultado, o *no_funcao* precisa ser um nome significativo que represente a tarefa da função. Os *parametros* são as listas de dados (separados por ;) que serão passados para a função realizar sua função. No *corpo_funcao* temos os comandos que definem a executação da função (desde de loops a variaveis locais)
+
+Existe uma situação ondem um função executará um tarefas mas não retornará um valor ao final, nesse caso temos a função do tipo **void** que indica a ausencia de valor a ser retornado
+
+### Parametros e Argumentos
+
+Quando uma função é declarada é necessária informa os parâmetros que ela irá receber para poder executar sua tarefa, e também o tipo de dado que ela retornará. Exemplo:
+
+```C
+double pow(double base, double expoente) // funcao recebe dois parametros do tipo double e retorna um valor do tipo double
+``` 
+
+Quando uma função é usada em um programa dizemos que ela está sendo **chamada**. E ao chamarmos ela, precisamos passar os dados que ela espera. Nessa chamada os dados que passamos para ela são chamados de **argumentos**. Exemplo:
+
+```C
+result = pow(2,i); // pow é chamada recebendo dois argumentos (2 e i) e retorna um valor resultante que será armazenado variável result
+```
+
+### Retorno de uma função
+
+Quando uma função termina de executar a sua tarefa, a função pode retornar um resultado para quem a chamou. Para isso acontecer é necessário utilizar o comando **return**.
+
+Quando o return é executado, ele retorna o fluxo de execução para o ponto seguinte de onde a função foi chamada.
+
+Esse return precisa ser deve ser seguido com uma expressão que indica o valor a ser retornado. Exemplo:
+	- return x;
+	- return a + b;
+	- return -1;
+
+Há o caso da função void, que não tem valor a ser retornado. Nesse caso:
+	- O comando return não é necessário;
+	- Se for utilizado, o comando não deve ser seguido de expressão (return ;).
+
 ## Adendo
 
 - Pré-pocessador: parte do sistema de processamento de linguagem de C que prepara o arquivo para ser compilado
