@@ -604,13 +604,13 @@ Quando uma função termina de executar a sua tarefa, a função pode retornar u
 Quando o return é executado, ele retorna o fluxo de execução para o ponto seguinte de onde a função foi chamada.
 
 Esse return precisa ser deve ser seguido com uma expressão que indica o valor a ser retornado. Exemplo:
-	- return x;
-	- return a + b;
-	- return -1;
+ - return x;
+ - return a + b;
+ - return -1;
 
 Há o caso da função void, que não tem valor a ser retornado. Nesse caso:
-	- O comando return não é necessário;
-	- Se for utilizado, o comando não deve ser seguido de expressão (return ;).
+ - O comando return não é necessário;
+ - Se for utilizado, o comando não deve ser seguido de expressão (return ;).
 
 ## Adendo
 
