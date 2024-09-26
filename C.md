@@ -790,3 +790,6 @@ x = 10;
 - Pré-pocessador: parte do sistema de processamento de linguagem de C que prepara o arquivo para ser compilado
 - Diretiva: instrução ao pré-processador sobre algo que deve realizar no programa a ser compilado
 - Operador ternário: exp1? exp2 : exp3.
+
+## Autor
+- Arthur dos Santos Oliveira
