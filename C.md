@@ -612,6 +612,179 @@ Há o caso da função void, que não tem valor a ser retornado. Nesse caso:
  - O comando return não é necessário;
  - Se for utilizado, o comando não deve ser seguido de expressão (return ;).
 
+## Recursividade
+
+Segundo o dicionário Michaelis, Recursividade é a propriedade daquilo que se pode repetir indefinidamente. Por exemplo, quando colocamos dois espelho frente a frente, infinitas imagens são refletidas.
+
+Em alguns problemas computacionais se emprega a recursividade, onde uma função faz a chamada dela mesma. Exemplo:
+
+```C
+void gentileza() {
+	gentiliza();
+}
+```
+
+No programa acima empregamos recursividade, no entanto, o programa ficou infinito. Ao definir uma função recursiva, é necessário definir também o seu critério de parada. Exemplo:
+
+```C
+void f (int c) {
+	if (c > 0)
+		f(c - 1);
+}
+```
+
+## Registros
+
+## Ponteiros
+
+Até o atual momento, as variáveis utilizadas armazenavem somente dados de tipos, como inteiro, real, string, char, matrizes e struct. Porém, em alguma das vezes é necessário manipular o endereço de variáveis.
+
+Para essas situações utilizam-se **ponteiros** (apontadores).
+
+Ponteiro é uma variável que contém um endereçi de memória. Em geral, o poteiro é uma variável que contém o endereço de memória de uma outra variável.
+
+### Declaração
+
+Os ponteiros assim como as demais variáveis possuem um determinado tipo, determinado tipo base. A forma de ser declarar é:
+
+```C
+ tipo_base *nome_variavel_ponteiro
+ int *p1;
+ char *p2;
+ float *p3;
+```
+
+### Operador &
+
+O operador **&** resultad no endereço de uma váriavel. Ex:
+
+```C
+ void main () {
+	int x = 10;
+	int *p;
+	p = &x;
+
+	printf("%p", p); // retornará o endereço da variável x (valores em hexadecimal);
+ }
+```
+
+### Operador *
+
+O símbolo * tem dois usos em contextos de ponteiros:
+
+1) Indica que uma variável é um ponteiro;
+2) Operador unário sobre uma variável ponteiro;
+
+O operador * resultado no conteúdo na posição de memória apontada pela variável ponteiro;
+
+```C
+ int x=10;
+ int *p;
+ int y;
+ p= &x;
+ y = *p;
+```
+### Expressão com ponteiro
+
+#### Atribuição
+
+Quando uma variável ponteiro é atribuida a outra.
+
+```C
+ int x, *p1, *p2;
+ p1 = &x;
+ p2 = p1 // Se printar os valores de p1 e p2, ambos mostraram o endereço de x
+```
+
+#### Artimética
+
+Com ponteiros somente duas operações podem ser realizadas, sendo elas, a adição e a subtração.
+
+A adição de um inteiro **n** a um ponteiro **p** faz com que passe a apontar para a **n-esima** posição adiante a qual p aponta, considerando a quantidade de bytes ocupado pelo tipo básico do ponteiro.
+
+A subtração de um inteiro **n** a um ponteiro **p** faz com que passe a apontar para a **n-esima** posição anterior a qual p aponta, considerando a quantidade de bytes ocupado pelo tipo básico do ponteiro.
+
+#### Comparação
+
+É possível comparar o valor de dois ponteiros com a operação relacional, onde:
+
+p e q (ponteiros):
+	- p > q: verdadeiro se o valor da posição anotado por p for maior que a de q
+	- p == q: verdadeiro se o endereço apontado por p for o mesmo de q
+
+### Ponteiros e Matrizes
+
+Quando uma matriz é definida, uma área de memória é reservada afim de que caibam os seus dados, sendo que a primeiro posição reservada para a matriz é o endereço de memória.
+
+Dessa forma, pode-se usar ponteiros para para acessar as posições de uma matriz.
+
+No exemplo abaixo, o ponteiro receberá o endereço da primeira posição da matriz, e em sequêcncia será acessado a sua quarta posição de duas formas:
+
+```C
+ int vet[5], *p;
+ p = vet;
+
+ printf("%d ou %d",vet[4], *(p + 4));
+```
+
+*obs: a mesma lógica é válidas pra matrizes de mais de uma dimensão*
+
+### Indireção Múltipla
+
+É possível que uma variável ponteiro aponte para outra variável ponteiro, nessa situação temos a chamada indireção múltipla ou ponteiro para ponteiro.
+
+```C
+ int x, *p, **q;
+ x= 25;
+ p = &x;
+ q = &p;
+ printf("\n%p - %p", p, q); // endereco - endereco
+ printf("\n%d", x); // valor de x
+ printf("\n%d", *p); // valor para onde p aponta (x)
+ printf("\n%p", *q); // valor para onde q aponta (endereco de p)
+ printf("\n%d", **q); // valor da variavel que q ponta (valor que p aponta - valor de x)
+```
+
+### NULL
+
+O valor **NULL** é usado para indicar que o ponteiro não aponta para algum lugar da memória.
+
+Quando um ponteiro é declarado, e não é inicializado com algum valor, ele contém um endereço desconhecido (lixo) e aponta para qualquer área da memória. Usando esse ponteiro em um programa, pode acarretar um erro não somente no programa em si, mas em qualquer outro em execução.
+
+## Tipos de Passagem de parametro
+
+### Parametro por valor
+
+Quando invocamos uma função, na passagem por valor é passada uma cópia do valor do argumento, ou seja, o valor da variável no main, por exemplo, não será alterada.
+
+```C
+ x = 10;
+ fazAlgo(x);
+
+ void fazAlgo(int a) {
+	a = a + 1; // a valerá 11, porém x ainda continuará valendo 10
+ }
+```
+
+### Parametro por referencia
+
+É importante lembra que toda variável ocupa um espaço de memória, e que cada uma possui um endereço.
+
+O endereço de uma variável é a sua referência. Dessa forma, na passagem de parametro por referencia, ocorre a passagem de seu endereço, não de seu valor.
+
+Para isso, o parametro por referencia de uma função deve ser um ponteiro, com isso as alterações realizadas em uma função alterará a valor da variável aonde foi invocada. Exemplo:
+
+```C
+x = 10;
+ fazAlgo(&x);
+
+ void fazAlgo(int *a) {
+	*a = *a + 1;
+ }
+```
+
+## 
+
 ## Adendo
 
 - Pré-pocessador: parte do sistema de processamento de linguagem de C que prepara o arquivo para ser compilado
